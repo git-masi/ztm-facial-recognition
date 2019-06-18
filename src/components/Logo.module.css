@@ -1,10 +1,20 @@
 .tilt {
-  margin: 1rem;
+  margin: 2rem;
   padding: 1rem;
   border: 1px solid black;
   box-shadow: 0 .5rem .8rem rgba(0,0,0,0.7);
+  background: #DA22FF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom right, #9733EE, #DA22FF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom right, #9733EE, #DA22FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
 }
 
 .tiltInner {
-  
+  padding: 1rem;
+}
+
+.tiltInner img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: center center;
 }
