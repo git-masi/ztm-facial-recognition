@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './components/Navigation';
 import Logo from './components/Logo';
 import ImageLinkForm from './components/ImageLinkForm';
+import Rank from './components/Rank';
 import './App.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <div className="App">
       <Navigation />
       <Logo />
+      <Rank />
       <ImageLinkForm />
       {/* <FacialRecognition /> */}
     </div>
