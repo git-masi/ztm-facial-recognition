@@ -1,13 +1,25 @@
 import React from 'react';
 
 const FacialRecognition = props => {
+  const coords = Object.values(props.boxCoord);
+  console.log(coords);
   return (
     <div style={{
-      margin: '1rem',
-      display: 'flex',
-      justifyContent: 'center',
+      margin: '1rem auto',
+      height: '300px',
+      width: '300px',
     }}>
-      <img src={props.imageURL} alt=""></img>
+      <img
+        style={{
+          position: 'relative',
+          height: '100%',
+          width: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center center'
+        }}
+        src={props.imageURL}
+        alt="">
+      </img>
     </div>
   )
 }

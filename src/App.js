@@ -16,24 +16,23 @@ class App extends Component {
   state = {
     input: '',
     imageURL: '',
+    boxCoord: {},
   }
 
   inputHandler = (e) => {
     this.setState({input: e.target.value});
   }
 
+  calcFaceLocation = data => {
+    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+    this.setState({boxCoord: clarifaiFace});
+  }
+
   buttonSubmitHandler = () => {
     this.setState({imageURL: this.state.input})
     app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
-    .then(
-      function(response) {
-        console.log(response);
-        console.log(response.outputs[0].data.regions[0].region_info.bounding_box);
-      },
-      function(err) {
-        console.log(err);
-      }
-    );
+    .then(response => this.calcFaceLocation(response))
+    .catch(err => console.log(err))
   }
 
   render () {
@@ -60,7 +59,10 @@ class App extends Component {
           inputHandler={this.inputHandler}
           buttonSubmitHandler={this.buttonSubmitHandler}
         />
-        <FacialRecognition imageURL={this.state.imageURL}/>
+        <FacialRecognition
+          imageURL={this.state.imageURL}
+          boxCoord={this.state.boxCoord}
+        />
       </div>
     );
   }
