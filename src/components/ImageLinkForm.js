@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './ImageLinkForm.module.css';
 
-const app = 'c73b0a1735814a7b8be81b3640ccf8a5';
-
 const ImageLinkForm = ({ inputHandler, buttonSubmitHandler}) => {
   return (
     <div className={styles.container}>
