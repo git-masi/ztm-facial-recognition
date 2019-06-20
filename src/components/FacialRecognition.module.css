@@ -15,4 +15,5 @@
 .box {
   position: absolute;
   border: 2px solid #3498db;
+  box-shadow: 0 .2rem .4rem rgba(0,0,0,0.5);
 }
