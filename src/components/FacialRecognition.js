@@ -1,24 +1,21 @@
 import React from 'react';
 import styles from './FacialRecognition.module.css';
 
-const FacialRecognition = props => {
-  const coords = Object.values(props.boxCoord);
-  console.log(coords);
-  const absPos = coords.map(val => `${val * 300}px`);
-  console.log(absPos);
+const FacialRecognition = ({ imageURL, boxPix }) => {
   return (
     <div className={styles.container}>
       <img
+        id="inputImage"
         className={styles.img}
-        src={props.imageURL}
+        src={imageURL}
         alt="">
       </img>
       <div
         style={{
-          top: absPos[0],
-          left: absPos[1],
-          bottom: absPos[2],
-          right: absPos[3]
+          left: boxPix[0],
+          top: boxPix[1],
+          right: boxPix[2],
+          bottom: boxPix[3],
         }}
         className={styles.box}
       >
