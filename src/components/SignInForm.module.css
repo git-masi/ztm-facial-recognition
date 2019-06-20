@@ -1,0 +1,13 @@
+.formWrapper {
+  margin: 0 auto;
+  padding: 1rem;
+  width: 40rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  justify-content: center;
+  align-content: center;
+}
+.formGroup {
+
+}

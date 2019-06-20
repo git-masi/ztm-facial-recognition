@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Clarifai from 'clarifai';
 import Particles from 'react-particles-js';
+import SignInForm from './components/SignInForm';
 import Navigation from './components/Navigation';
 import Logo from './components/Logo';
 import ImageLinkForm from './components/ImageLinkForm';
@@ -17,6 +18,7 @@ class App extends Component {
     input: '',
     imageURL: '',
     boxPix: [],
+    route: 'signin',
   }
 
   inputHandler = (e) => {
@@ -53,31 +55,37 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-         <Particles
-            className="particleStyles"
-            params={{
-              particles: {
-                number: {
-                  value: 80,
-                  density: {
-                    enable: true,
-                    value_area: 400,
-                  }
+        <Particles
+          className="particleStyles"
+          params={{
+            particles: {
+              number: {
+                value: 80,
+                density: {
+                  enable: true,
+                  value_area: 400,
                 }
               }
-            }} 
-          />
+            }
+          }} 
+        />
         <Navigation />
-        <Logo />
-        <Rank />
-        <ImageLinkForm
-          inputHandler={this.inputHandler}
-          buttonSubmitHandler={this.buttonSubmitHandler}
-        />
-        <FacialRecognition
-          imageURL={this.state.imageURL}
-          boxPix={this.state.boxPix}
-        />
+          {
+            this.state.route === 'signin' ?
+            <SignInForm /> :
+            <Fragment>
+              <Logo />
+              <Rank />
+              <ImageLinkForm
+                inputHandler={this.inputHandler}
+                buttonSubmitHandler={this.buttonSubmitHandler}
+              />
+              <FacialRecognition
+                imageURL={this.state.imageURL}
+                boxPix={this.state.boxPix}
+              />
+            </Fragment>
+          }
       </div>
     );
   }
