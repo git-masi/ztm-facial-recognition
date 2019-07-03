@@ -2,9 +2,14 @@ import React from 'react';
 import styles from './SignInForm.module.css';
 
 const SignInForm = props => {
+
+  const onRouteChange = () => {
+    props.onRouteChange('home');
+  }
+
   return (
     <div className={styles.formWrapper}>
-      <form>
+      <form onSubmit={onRouteChange}>
         <fieldset>
           <legend>Sign In</legend>
           <div className={styles.formGroup}>

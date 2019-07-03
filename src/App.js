@@ -18,7 +18,7 @@ class App extends Component {
     input: '',
     imageURL: '',
     boxPix: [],
-    route: 'signin',
+    route: 'signIn',
   }
 
   inputHandler = (e) => {
@@ -52,6 +52,10 @@ class App extends Component {
     .catch(err => console.log(err))
   }
 
+  onRouteChange = val => {
+    this.setState({ route: val });
+  }
+
   render () {
     return (
       <div className="App">
@@ -69,10 +73,10 @@ class App extends Component {
             }
           }} 
         />
-        <Navigation />
+        <Navigation onRouteChange={this.onRouteChange}/>
           {
-            this.state.route === 'signin' ?
-            <SignInForm /> :
+            this.state.route === 'signIn' ?
+            <SignInForm onRouteChange={this.onRouteChange}/> :
             <Fragment>
               <Logo />
               <Rank />
