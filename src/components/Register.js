@@ -1,11 +1,9 @@
 import React from 'react';
-import styles from './SignInForm.module.css';
+import styles from './Register.module.css';
 
-const SignInForm = props => {
+const Register = props => {
 
-  const onRouteChange = e => {
-    e.target.name === 'register' ?
-    props.onRouteChange('register') :
+  const onRouteChange = () => {
     props.onRouteChange('home');
   }
 
@@ -13,7 +11,11 @@ const SignInForm = props => {
     <div className={styles.formWrapper}>
       <form onSubmit={onRouteChange}>
         <fieldset>
-          <legend>Sign In</legend>
+          <legend>Register</legend>
+          <div className={styles.formGroup}>
+            <label htmlFor="name">name</label>
+            <input type="name" name="name"/>
+          </div>
           <div className={styles.formGroup}>
             <label htmlFor="email">email</label>
             <input type="email" name="email"/>
@@ -23,11 +25,11 @@ const SignInForm = props => {
             <input type="text" name="password"/>
           </div>
         </fieldset>
-          <input type="submit" value="Sign In"/>
+          <input type="submit" value="Register"/>
       </form>
-      <button name="register" onClick={onRouteChange}>Register</button>
+      {/* <button>Register</button> */}
     </div>
   )
 }
 
-export default SignInForm;
+export default Register;

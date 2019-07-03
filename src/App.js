@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Clarifai from 'clarifai';
 import Particles from 'react-particles-js';
 import SignInForm from './components/SignInForm';
+import Register from './components/Register';
 import Navigation from './components/Navigation';
 import Logo from './components/Logo';
 import ImageLinkForm from './components/ImageLinkForm';
@@ -57,6 +58,28 @@ class App extends Component {
   }
 
   render () {
+    const { route } = this.state;
+    let display;
+    if (route === 'signIn') {
+      display = <SignInForm onRouteChange={this.onRouteChange}/>;
+    } else if (route === 'register') {
+      display = <Register onRouteChange={this.onRouteChange}/>;
+    } else {
+      display =
+        <Fragment>
+          <Logo />
+          <Rank />
+          <ImageLinkForm
+            inputHandler={this.inputHandler}
+            buttonSubmitHandler={this.buttonSubmitHandler}
+          />
+          <FacialRecognition
+            imageURL={this.state.imageURL}
+            boxPix={this.state.boxPix}
+          />
+        </Fragment>
+    }
+
     return (
       <div className="App">
         <Particles
@@ -74,22 +97,7 @@ class App extends Component {
           }} 
         />
         <Navigation onRouteChange={this.onRouteChange}/>
-          {
-            this.state.route === 'signIn' ?
-            <SignInForm onRouteChange={this.onRouteChange}/> :
-            <Fragment>
-              <Logo />
-              <Rank />
-              <ImageLinkForm
-                inputHandler={this.inputHandler}
-                buttonSubmitHandler={this.buttonSubmitHandler}
-              />
-              <FacialRecognition
-                imageURL={this.state.imageURL}
-                boxPix={this.state.boxPix}
-              />
-            </Fragment>
-          }
+        { display }
       </div>
     );
   }
