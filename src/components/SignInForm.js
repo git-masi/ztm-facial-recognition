@@ -6,7 +6,12 @@ const SignInForm = props => {
   const onRouteChange = e => {
     e.target.name === 'register' ?
     props.onRouteChange('register') :
-    props.onRouteChange('home');
+    props.onRouteChange('home')
+    signInHandler();
+  }
+
+  const signInHandler = () => {
+    props.signInHandler();
   }
 
   return (

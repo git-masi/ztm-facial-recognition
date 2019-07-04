@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Clarifai from 'clarifai';
-import Particles from 'react-particles-js';
+// import Particles from 'react-particles-js';
 import SignInForm from './components/SignInForm';
 import Register from './components/Register';
 import Navigation from './components/Navigation';
@@ -19,7 +19,8 @@ class App extends Component {
     input: '',
     imageURL: '',
     boxPix: [],
-    route: 'signIn',
+    route: 'home',
+    isSignedIn: false,
   }
 
   inputHandler = (e) => {
@@ -57,11 +58,15 @@ class App extends Component {
     this.setState({ route: val });
   }
 
+  signInHandler = () => {
+    this.setState({isSignedIn: !this.state.isSignedIn});
+  }
+
   render () {
     const { route } = this.state;
     let display;
     if (route === 'signIn') {
-      display = <SignInForm onRouteChange={this.onRouteChange}/>;
+      display = <SignInForm onRouteChange={this.onRouteChange} signInHandler={this.signInHandler}/>;
     } else if (route === 'register') {
       display = <Register onRouteChange={this.onRouteChange}/>;
     } else {
@@ -82,7 +87,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Particles
+        {/* <Particles
           className="particleStyles"
           params={{
             particles: {
@@ -95,8 +100,8 @@ class App extends Component {
               }
             }
           }} 
-        />
-        <Navigation onRouteChange={this.onRouteChange}/>
+        /> */}
+        <Navigation onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn} signInHandler={this.signInHandler}/>
         { display }
       </div>
     );
