@@ -3,13 +3,14 @@ import styles from './Register.module.css';
 
 const Register = props => {
 
-  const onRouteChange = () => {
+  const submitHandler = () => {
     props.onRouteChange('home');
+    props.signInHandler();
   }
 
   return (
     <div className={styles.formWrapper}>
-      <form onSubmit={onRouteChange}>
+      <form onSubmit={submitHandler}>
         <fieldset>
           <legend>Register</legend>
           <div className={styles.formGroup}>

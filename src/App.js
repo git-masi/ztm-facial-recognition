@@ -68,7 +68,7 @@ class App extends Component {
     if (route === 'signIn') {
       display = <SignInForm onRouteChange={this.onRouteChange} signInHandler={this.signInHandler}/>;
     } else if (route === 'register') {
-      display = <Register onRouteChange={this.onRouteChange}/>;
+      display = <Register onRouteChange={this.onRouteChange} signInHandler={this.signInHandler}/>;
     } else {
       display =
         <Fragment>

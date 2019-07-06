@@ -4,14 +4,12 @@ import styles from './SignInForm.module.css';
 const SignInForm = props => {
 
   const onRouteChange = e => {
-    e.target.name === 'register' ?
-    props.onRouteChange('register') :
-    props.onRouteChange('home')
-    signInHandler();
-  }
-
-  const signInHandler = () => {
-    props.signInHandler();
+    if (e.target.name === 'register') {
+      props.onRouteChange('register');
+    } else {
+      props.onRouteChange('home');
+      props.signInHandler();
+    }
   }
 
   return (
